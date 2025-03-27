@@ -1,0 +1,22 @@
+name: Demo Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  demo-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Run a simple script
+      - name: Run Demo Script
+        run: |
+          echo "Hello, GitHub Actions!"
+          echo "This is a simple workflow demo."
+          echo "The current branch is ${{ github.ref_name }}."
