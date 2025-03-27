@@ -1,22 +1,20 @@
-name: Demo Workflow
+name: Manual install
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  demo-job:
+  install:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
-      - name: Checkout Code
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      run: git clone ${{ github.repository_url }} .
 
-      # Step 2: Run a simple script
-      - name: Run Demo Script
-        run: |
-          echo "Hello, GitHub Actions!"
-          echo "This is a simple workflow demo."
-          echo "The current branch is ${{ github.ref_name }}."
+    - name: Set up Node.js
+      run: |
+        curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+
+    - name: Install dependencies
+      run: npm install
