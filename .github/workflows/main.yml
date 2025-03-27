@@ -1,9 +1,9 @@
 name: Main Install
 
 on:
+  pull_request:
+    types: [opened, reopened, synchronize]
   workflow_dispatch:
-    pull_request:
-      types: [opened, reopened, synchronize]
     inputs:
       run-tests:
         description: "Run tests?"
