@@ -1,4 +1,4 @@
-name: Manual install
+name: Main Install
 
 on:
   workflow_dispatch:
